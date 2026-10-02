@@ -1,4 +1,3 @@
-
 const course = 'CSIT340 - Industry Elective 1'
 
 const parts = [
@@ -41,6 +40,15 @@ function Content({ parts }) {
   )
 }
 
+// Footer component
+function Footer({ name, course, section }) {
+  return (
+    <footer>
+      {name} - {course} - {section}
+    </footer>
+  )
+}
+
 // Main App component
 function App() {
   const total = parts.reduce(
@@ -57,6 +65,12 @@ function App() {
       <Content parts={parts} />
 
       <h3>Total Units: {total}</h3>
+
+      <Footer
+        name="Joshua Kent Niño L. Limjap"
+        course="CSIT340"
+        section="G8"
+      />
     </div>
   )
 }
