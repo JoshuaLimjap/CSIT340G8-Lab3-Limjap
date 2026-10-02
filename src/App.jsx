@@ -1,20 +1,20 @@
 
 const course = 'CSIT340 - Industry Elective 1'
 
-const parts = [
-  {
-    name: 'CSIT340 - Industry Elective 1',
-    exercises: 3
-  },
-  {
-    name: 'CSIT327 - Information Management 2',
-    exercises: 3
-  },
-  {
-    name: 'ES038 - Technopreneurship',
-    exercises: 3
-  }
-]
+const part1 = {
+  name: 'CSIT340 - Industry Elective 1',
+  exercises: 3
+}
+
+const part2 = {
+  name: 'CSIT327 - Information Management 2',
+  exercises: 3
+}
+
+const part3 = {
+  name: 'ES038 - Technopreneurship',
+  exercises: 3
+}
 
 // Header component
 function Header({ course }) {
@@ -31,12 +31,12 @@ function Part({ part }) {
 }
 
 // Content component
-function Content({ parts }) {
+function Content({ part1, part2, part3 }) {
   return (
     <ul>
-      {parts.map((part, index) => (
-        <Part key={index} part={part} />
-      ))}
+      <Part part={part1} />
+      <Part part={part2} />
+      <Part part={part3} />
     </ul>
   )
 }
@@ -49,7 +49,11 @@ function App() {
 
       <h2>Course Information</h2>
 
-      <Content parts={parts} />
+      <Content
+        part1={part1}
+        part2={part2}
+        part3={part3}
+      />
     </div>
   )
 }
