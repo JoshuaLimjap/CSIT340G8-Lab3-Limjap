@@ -1,20 +1,20 @@
 
 const course = 'CSIT340 - Industry Elective 1'
 
-const part1 = {
-  name: 'CSIT340 - Industry Elective 1',
-  exercises: 3
-}
-
-const part2 = {
-  name: 'CSIT327 - Information Management 2',
-  exercises: 3
-}
-
-const part3 = {
-  name: 'ES038 - Technopreneurship',
-  exercises: 3
-}
+const parts = [
+  {
+    name: 'CSIT340 - Industry Elective 1',
+    exercises: 3
+  },
+  {
+    name: 'CSIT327 - Information Management 2',
+    exercises: 3
+  },
+  {
+    name: 'ES038 - Technopreneurship',
+    exercises: 3
+  }
+]
 
 // Header component
 function Header({ course }) {
@@ -31,29 +31,32 @@ function Part({ part }) {
 }
 
 // Content component
-function Content({ part1, part2, part3 }) {
+function Content({ parts }) {
   return (
     <ul>
-      <Part part={part1} />
-      <Part part={part2} />
-      <Part part={part3} />
+      {parts.map((part, index) => (
+        <Part key={index} part={part} />
+      ))}
     </ul>
   )
 }
 
 // Main App component
 function App() {
+  const total = parts.reduce(
+    (sum, part) => sum + part.exercises,
+    0
+  )
+
   return (
     <div>
       <Header course={course} />
 
       <h2>Course Information</h2>
 
-      <Content
-        part1={part1}
-        part2={part2}
-        part3={part3}
-      />
+      <Content parts={parts} />
+
+      <h3>Total Units: {total}</h3>
     </div>
   )
 }
