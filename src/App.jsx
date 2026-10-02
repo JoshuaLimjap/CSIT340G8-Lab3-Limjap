@@ -16,20 +16,40 @@ const parts = [
   }
 ]
 
+// Header component
+function Header({ course }) {
+  return <h1>{course}</h1>
+}
+
+// Part component
+function Part({ part }) {
+  return (
+    <li>
+      {part.name}: {part.exercises} units
+    </li>
+  )
+}
+
+// Content component
+function Content({ parts }) {
+  return (
+    <ul>
+      {parts.map((part, index) => (
+        <Part key={index} part={part} />
+      ))}
+    </ul>
+  )
+}
+
+// Main App component
 function App() {
   return (
     <div>
-      <h1>{course}</h1>
+      <Header course={course} />
 
       <h2>Course Information</h2>
 
-      <ul>
-        {parts.map((part, index) => (
-          <li key={index}>
-            {part.name}: {part.exercises} units
-          </li>
-        ))}
-      </ul>
+      <Content parts={parts} />
     </div>
   )
 }
